@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rental Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <!-- <img src="../public/images/Background.png"> -->
+            <h2>Rento<span> ✖ </span>
+                <%= username %>
+            </h2>
+
+        </div>
+        <div class="navbar-user">
+            <!-- <span class="username">
+                <%= username %>
+            </span> -->
+            <div class="status">
+
+                <div class="status-dot"></div>
+
+                <a href="/logout">logout</a>
+
+            </div>
+            <a href="/editprofile"> <img width="50" height="50"
+                    src="https://img.icons8.com/ios-filled/50/user-male-circle.png" alt="user-male-circle" /></a>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <!-- <div class="topdetails">
+            <div class="owner">
+                <h2>owner</h2>
+                <p>
+                    @<%=post.owner.username%>
+                </p>
+            </div>
+            <div class="rating">
+                <h1>★</h1>
+                <h1>★</h1>
+                <h1>★</h1>
+                <h1>★</h1>
+                <h1>★</h1>
+
+            </div>
+            <div class="rentedby right">
+                <h2>rented by</h2>
+                <p>@prakash meena</p>
+            </div>
+        </div> -->
+        <div class="details">
+
+
+            <div class="textdetails">
+               <div class="owner">
+                <p><%=post.owner.username %>'s</p>
+                   <h2>
+                       <%= post.title%>
+                    </h2>
+                </div>
+                <p>
+                    <%= post.description%>
+                </p>
+                <!-- <div class="line">
+                    <p>20 times</p>
+                    <p>5000/Day</p>
+                    <p>5 star rated</p>
+                </div> -->
+                <p>at ₹<%= post.price %>/day </p>
+                <a href="">Send Request</a>
+
+
+            </div>
+            <img src="../uploads/<%=post.image%>" alt="">
+        </div>
+    </div>
+
+    made with ♡ by @yusufsaify
+
+</body>
+
+</html>
+<!-- <img src="https://agfundernews.com/wp-content/uploads/2022/08/281832544_4872557739523316_4916680536175142455_n.jpeg"
+alt="Equipment 1"> -->
+<style>
+    :root {
+        --clr1: rgb(228, 250, 194);
+    }
+
+    /* styles.css */
+    body {
+        margin: 0;
+        background: beige;   
+        box-sizing: border-box;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    * {
+        /* border: 1px solid red; */
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+
+    }
+
+    span {
+        /* font-style: italic; */
+        opacity: .2;
+        font-weight: 100;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #c4dcb2;
+        color: #fff;
+        height: 75px;
+        padding: 10px;
+    }
+
+    .navbar-logo h2 {
+        color: rgb(0, 0, 0);
+        padding: 5px 20px;
+        font-size: 34px;
+        border-radius: 60px;
+        letter-spacing: -3px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+
+
+
+    .navbar-user {
+        display: flex;
+        margin-right: 30px;
+        align-items: center;
+
+    }
+
+    .navbar-user img {
+        width: 40px;
+        height: 40px;
+        padding-left: 5px;
+        cursor: pointer;
+        border-left: 2px solid rgba(0, 0, 0, 0.201);
+        opacity: .7;
+        transition: .3s;
+    }
+
+    .navbar-user img:hover {
+        opacity: .8;
+    }
+
+    .username {
+        margin-right: 10px;
+        font-size: 20px;
+        letter-spacing: 0px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        color: rgb(0, 0, 0);
+    }
+
+    .status-dot {
+        width: 10px;
+        height: 10px;
+        background-color: var(--onlineclr);
+        border-radius: 50%;
+        margin-right: 10px;
+        box-shadow: 0px 0px 10px 1px var(--onlineclr);
+
+        animation: pulse 1s infinite alternate;
+    }
+
+
+    .status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #3b4235;
+        padding: 10px 20px;
+        border-radius: 27px;
+        cursor: pointer;
+        margin-right: 5px;
+        /* box-shadow: 1px 1px 0px 1px #00000054; */
+    }
+
+    .status a {
+        text-decoration: none;
+        color: white;
+        cursor: pointer;
+    }
+
+
+    .status:hover {
+        transition: .3s;
+
+        background-color: rgb(29, 29, 29);
+
+    }
+
+    .container {
+        /* width: calc(100vw - 5px); */
+        height: 500px;
+        padding: 20px;
+        margin-bottom: 30px;
+        box-sizing: border-box;
+
+    }
+
+    .container img {
+        height: 100%;
+        box-shadow: inset 0px 0px 4px red;
+        filter: sepia(1) hue-rotate(30deg);
+        z-index: -1;
+        max-width: 50%;
+    }
+
+
+    .topdetails {
+        background-color: rgb(228, 250, 194);
+        display: flex;
+        width: calc(100vw - 40px);
+        padding: 15px;
+        border-left: 4px solid green;
+        /* margin-bottom: 10px; */
+        border: 4px solid green;
+        border-bottom: none;
+        justify-content: space-between;
+    }
+
+    .topdetails h2 {
+        color: rgba(0, 128, 0, 0.4);
+        letter-spacing: 2px;
+        font-size: 20px;
+        text-transform: uppercase;
+        font-family: math;
+    }
+
+    .topdetails p {
+        font-size: 25px;
+        color: rgba(0, 128, 0, 0.9);
+        cursor: pointer;
+    }
+
+    .topdetails p:hover {
+        text-decoration: underline;
+    }
+
+    .right {
+        text-align: right;
+    }
+
+    .details {
+        height: calc(100% - 50px);
+        /* border-bottom-right-radius: 50px; */
+        border: 4px solid #c4dcb2;
+        /* border-top: none; */
+        display: flex;
+        background: linear-gradient(to right, var(--clr1) 38%, var(--clr1), transparent, transparent);
+        justify-content: space-between;
+    }
+
+    .rating h1 {
+        color: rgb(220, 191, 46);
+        font-size: 30px;
+        cursor: pointer;
+        /* text-shadow: 0px 4px 5px #2d2d2a33; */
+        letter-spacing: 3px;
+        display: inline-block;
+        margin: 0;
+    }
+
+    .rating h1:nth-child(1) {
+        animation: reveal 1s 1;
+    }
+
+    .rating h1:nth-child(2) {
+        animation: reveal 1.3s 1;
+    }
+
+
+    .rating h1:nth-child(3) {
+        animation: reveal 1.5s 1;
+    }
+
+    .rating h1:nth-child(4) {
+        animation: reveal 1.7s 1;
+    }
+
+    .rating h1:nth-child(5) {
+        animation: reveal 1.9s 1;
+    }
+
+
+    @keyframes reveal {
+        from {
+            transform: translateY(-100px) rotate(10deg);
+            opacity: 0;
+            /* scale: 3   ; */
+        }
+    }
+
+    .textdetails {
+        background-color: var(--clr1);
+        width: -webkit-fill-available;
+        display: flex;
+        z-index: 1;
+        flex-direction: column;
+        align-items: start;
+        text-align: start;
+        border-bottom-right-radius: 50px;
+        padding: 15px;
+        justify-content: space-between;
+    }
+
+    .textdetails a {
+        color: rgb(226, 255, 188);
+        background: #162a16;
+        text-decoration: none;
+        font-size: 20px;
+        text-transform: capitalize;
+        font-family: math;
+        padding: 10px 60px;
+        border-radius: 7px;
+    }
+
+    .textdetails h2 {
+        font-family: math;
+        text-transform: capitalize;
+        font-size: 44px;
+        color: rgb(22, 99, 22);
+        margin-bottom: 10px;
+    }
+
+    .textdetails p {
+        font-size: 24px;
+        color: rgba(0, 128, 0, 0.4);
+    }
+</style>

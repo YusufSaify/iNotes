@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+
+<body>
+    <div class="backbtn">
+        <button onclick="goto('/profile')">
+            🡠
+        </button>
+    </div>
+    <div class="profile-detail-container">
+
+        <div class="profile-details">
+
+            <div class="profile-img">
+
+                <% if(user.image){%>
+
+                    <img width="150px" height="150px" src="./uploads/<%= user.image %>" alt="user-male-circle" />
+                    <% }else{%>
+                        <img width="150px" height="150px" src="    https://img.icons8.com/ios-filled/1000/user-male-circle.png
+                        " alt="user-male-circle" />
+
+                        <%}%>
+            </div>
+
+
+            <h4>
+                <%=user.email%>
+            </h4>
+            <h2>
+                <%=user.username%>
+            </h2>
+
+            <p>
+                <%=user.about%>
+            </p>
+
+            <div class="flex">
+                <a href="/edituserdetail" class="create-post-btn">Edit Profile</a>
+                <a href="/createpost" class="create-post-btn">Create New Post</a>
+                <a href="/notifications" class="create-post-btn">Requests</a>
+
+            </div>
+        </div>
+    </div>
+    <h3>
+        • <%= posts.length%> Posts •
+    </h3>
+    <div class="post-section">
+        <!-- post-card.ejs -->
+        <% posts.forEach(function(post){%>
+
+            <div class="post-card" onclick="goto('/show/<%=post._id%>')">
+                <div class="option">
+                    <h2>⋮</h2>
+                </div>
+                <img src="../uploads/<%= post.image %>" alt="<%= post.title %>">
+                <div class="post-details">
+                    <h2>
+                        <%= post.title %>
+                    </h2>
+                    <p>
+                        <%= post.description %>
+                    </p>
+                    <span>Price: ₹<%= post.price %></span>
+                </div>
+            </div>
+
+            <!-- More posts can be added dynamically -->
+            <%})%>
+    </div>
+    <h3>
+        • Saved Posts •
+    </h3>
+
+    <div class="post-section">
+
+        <!-- post-card.ejs -->
+
+
+        <div class="post-card">
+            <img src="../uploads/4278ffdb-3315-4f9b-a7ed-11c2c0203926.jpg" alt="Full power thrasher for easy ">
+            <div class="post-details">
+                <h2>
+                    Full power thrasher for easy
+                </h2>
+                <p>
+                    it is very powerfull machine to make your task easier rant it now with just 5000 rupees per day
+                </p>
+                <span>Price: 5000</span>
+            </div>
+        </div>
+
+        <!-- More posts can be added dynamically -->
+
+
+        <div class="post-card">
+            <img src="../uploads/bd3af26d-5c7e-4477-a725-103719713904.jpg" alt="hight compressor tracter ">
+            <div class="post-details">
+                <h2>
+                    hight compressor tracter
+                </h2>
+                <p>
+                    it is very powerfull tractor with 5 gears and reverse gear also rent it now by just 2000 rupeees
+                    per day
+                </p>
+                <span>Price: 2000</span>
+            </div>
+        </div>
+
+
+
+        <div class="post-card">
+            <img src="../uploads/71badd23-615a-4d2c-a22b-53d2efc28659.jpg" alt="very high pressure threasure machine ">
+            <div class="post-details">
+                <h2>
+                    very high pressure threasure machine
+                </h2>
+                <p>
+                    At just 3500 rupees per day with labour
+                </p>
+                <span>Price: 3500</span>
+            </div>
+        </div>
+
+        <!-- More posts can be added dynamically -->
+
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    document.addEventListener('load', () => {
+        console.log("loaded")
+        document.querySelector("body").classList.remove = "none";
+    });
+
+
+    function goto(link) {
+        window.location.href = link;
+
+    }
+</script>
+<style>
+    .none {
+        display: none;
+    }
+
+    * {
+        font-family: math;
+        /* border: 1px solid green; */
+        margin: 0;
+        box-sizing: border-box;
+        padding: 0;
+    }
+
+    :root {
+        --clr1: rgb(228, 250, 194);
+    }
+
+
+    body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: rgb(255, 255, 245);
+    }
+
+
+    .backbtn button {
+        top: 2%;
+        left: 1%;
+        font-size: 28px;
+        cursor: pointer;
+        border: none;
+        position: fixed;
+        width: 40px;
+        background-color: #65937c;
+        color: white;
+        border-radius: 200px;
+        /* position: absolute; */
+    }
+
+    .backbtn button:hover {
+        background-color: #5e7c6d;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: beige;
+
+        padding: 20px;
+        /* display: flex; */
+    }
+
+    .profile-detail-container {
+        display: flex;
+        border-bottom: 2px solid rgba(128, 128, 128, 0.2);
+
+    }
+
+
+    .flex {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 620px;
+    }
+
+    .backbtn img {
+        /* background-color: #7cbc9c; */
+        margin: 10px;
+        z-index: 1;
+        cursor: pointer;
+        cursor: pointer;
+        opacity: .4;
+        position: absolute;
+        border-radius: 50%;
+    }
+
+    .backbtn h1 {
+        font-size: 40px;
+        position: fixed;
+        top: 2%;
+        left: 2%;
+        color: #608573;
+        cursor: pointer;
+        font-weight: 100
+    }
+
+    .backbtn a:active {
+        opacity: 1;
+    }
+
+    .profile-container {
+        max-width: 800px;
+        /* margin: 20px auto; */
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-details {
+        padding: 20px;
+        /* background-color: rgb(171, 0, 0); */
+        align-items: center;
+        flex-direction: column;
+        display: flex;
+        text-align: center;
+    }
+
+    .profile-img {
+        position: relative;
+
+    }
+
+    .profile-details h2 {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-family: math;
+
+        margin: 5px 0px;
+    }
+
+    .profile-details h4 {
+        /* margin: 5px 0px; */
+        color: #7cbc9c;
+        font-size: 20px;
+        font-weight: 400;
+
+    }
+
+    .profile-details p {
+        color: rgb(135, 135, 135);
+        padding: 0px 200px;
+
+
+    }
+
+    .username img {
+        width: 20px;
+        height: 20px;
+    }
+
+
+
+    .profile-details img {
+
+        cursor: pointer;
+        text-align: center;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+
+
+
+
+    .post-section {
+        padding: 20px;
+        /* align-items: center;  */
+        display: flex;
+        /* background: linear-gradient(to top, rgba(128, 128, 128, 0.1), transparent); */
+        justify-content: center;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 20px;
+        border-bottom: 2px solid rgb(0, 0, 0, 0.1);
+    }
+
+    h3 {
+        text-align: center;
+        text-transform: uppercase;
+        width: calc(100vw - 50px);
+        font-weight: 100;
+        letter-spacing: 3px;
+        padding-top: 40px;
+    }
+
+    .post {
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .post h4 {
+        margin-top: 0;
+    }
+
+    .create-post-btn {
+        display: block;
+        width: 200px;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #7cbc9c;
+        color: #fff;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .create-post-btn:hover {
+        background-color: #608573;
+    }
+
+    /* style.css */
+    .post-card {
+        border: 3px solid #ffffff;
+        width: 300px;
+        margin: 6px;
+        position: relative;
+        border-radius: 10px;
+        box-shadow: 0 6px 6px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        background: linear-gradient(to top, white, white, white 39%, transparent, transparent, transparent);
+        overflow: hidden;
+    }
+
+    .option h2 {
+        position: absolute;
+        top: 5px;
+        font-size: 36px;
+        color: white;
+        font-weight: 100;
+        right: 8px;
+        filter: drop-shadow(0px 0px 5px 1px black);
+    }
+
+    .post-card img {
+        width: -webkit-fill-available;
+        position: relative;
+        z-index: -1;
+        /* filter: saturate(.5); */
+        object-fit: cover;
+        height: 230px;
+    }
+
+    .post-card:hover.post-card img {
+        filter: none;
+        transition: .6s;
+    }
+
+    .post-details {
+        /* background-color: red;  */
+        padding: 20px 10px;
+        padding-top: 0px;
+    }
+
+
+
+    .post-details h2 {
+
+        text-transform: capitalize;
+        font-size: 20px;
+        color: #4b4b4b;
+        font-weight: lighter;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+    .post-details p {
+        margin: 10px 0px;
+        font-size: 16px;
+        color: rgb(171, 171, 171);
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        /* Ensure text ends with dots */
+        text-overflow: ellipsis;
+    }
+
+    .post-details span {
+        /* font-weight: bold;
+        color */
+        border: 2px solid rgb(54, 142, 54);
+        color: rgb(54, 142, 54);
+        padding: 5px 10px;
+        border-radius: 50px;
+        font-size: 15px;
+        /* color: rgb(255, 251, 214); */
+    }
+
+    /* Track */
+    ::-webkit-scrollbar {
+        width: 8px;
+        /* width of the scrollbar */
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+        /* color of the scrollbar handle */
+        border-radius: 4px;
+        /* roundness of the scrollbar handle */
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+        /* color of the scrollbar handle on hover */
+    }
+</style>

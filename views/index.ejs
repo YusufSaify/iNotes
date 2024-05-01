@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home</title>
+    <style>
+        /* Navbar container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #f0f0f0; /* Change to desired background color */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+        }
+
+        /* Logo */
+        .navbar-logo {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: #333; /* Change to desired logo color */
+        }
+
+        /* Login button */
+        .login-btn {
+            padding: 10px 20px;
+            background-color: #007bff; /* Change to desired button color */
+            color: #fff; /* Change to desired button text color */
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 15px;
+            }
+
+            .login-btn {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="navbar-logo">Your Logo</div>
+    <a href="/login" class="login-btn">Login</a>
+</div>
+
+</body>
+</html>
