@@ -77,7 +77,7 @@ app.post('/login', passport.authenticate('local'), (req, res) => {
 app.get('/profile', isAuthenticated, async (req, res) => {
 
     const posts = await post.find({ owner: req.user._id }).populate("owner");
-    if(req.user.post){
+    if(req.user.posts){
         res.render('profile', { username: req.user.username, post: posts[0] });
     }else{
         const post={
